@@ -10,7 +10,18 @@ DatabaseConnectionHandler is a simple PDO wrapper. The DatabaseConnectionHandler
 1. Just copy the included files into a folder in your project and include the ```DatabaseConnectionHandler.php``` wherever you want in your php files to use it.
 2. To give the connection credentials for your own database please edit the file ```DataBaseConnection.php``` and fill out the placeholders with your own mysql server informations.
 
+## Roadmap / Specifications
+
+* [x] Uses namespaces
+* [x] PHP 7+ compatible
+* [x] Error handling with exceptions
+* [x] Use of `?` and `:param` syntax for prepared statements
+* [ ] Feel free to raise an issue or more features
+
 ## Usage
+
+### Namespace
+Use `\MK\DB` as namespace.
 
 ### Open up connection / create an instance
 After including ```DatabaseConnectionHandler.php``` into a php file you need the get the current instance over the static function ```getInstance()```. After that you are ready to query your database.
@@ -23,14 +34,15 @@ The ```query()``` method has two parameters:
 * *$arguments* is an array with certain arguments for the query string.
 
 A query with parameters is build up like any query in PDO you use "?" to signal the DatabaseConnectionHandler that there is a matching argument for the placeholder in the *$arguments* array. So i.e.:
-
 ```php
+use \MK\DB;
+
 $dbc_handler = DatabaseConnectionHandler::getInstance();
 
 $searched_name = "Jack"
 $searched_age = 21
 
-$result = $dbc_handler = $dbc_handler->query("INSERT INTO my_table (name, age) VALUES (?, ?);", array($searched_name, $searched_age));
+$result = $dbc_handler->query("INSERT INTO my_table (name, age) VALUES (?, ?);", array($searched_name, $searched_age));
 ```
 
 ### Get results from your query
@@ -45,6 +57,8 @@ The ```DatabaseResult``` has the following methods:
 Here is a simple example of how to use the DatabaseResult object:
 
 ```php
+use \MK\DB;
+
 $dbc_handler = DatabaseConnectionHandler::getInstance();
 
 $searched_name = "Jack"
