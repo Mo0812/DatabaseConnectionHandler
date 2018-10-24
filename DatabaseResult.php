@@ -1,7 +1,13 @@
 <?php
+namespace MK\DB;
 
 class DatabaseResult {
 
+    /**
+     * Undocumented variable
+     *
+     * @var \PDOStatement
+     */
     public $statement = null;
     private $last_insert_id;
 
@@ -10,6 +16,11 @@ class DatabaseResult {
         $this->last_insert_id = $last_insert_id;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return int
+     */
     public function getSelectedRows() {
         if(!is_null($this->statement)) {
             return $this->statement->rowCount();
@@ -18,6 +29,11 @@ class DatabaseResult {
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return mixed
+     */
     public function nextRow() {
         if(!is_null($this->statement)) {
             $row = $this->statement->fetch();
@@ -27,14 +43,24 @@ class DatabaseResult {
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return array
+     */
     public function fetchAll() {
-        if(!is_null($this->statement) && !$this->fetchTrigger) {
+        if(!is_null($this->statement)) {
             return $this->statement->fetchAll();
         } else {
             return false;
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return int
+     */
     public function getLastInsertID() {
         return $this->last_insert_id;
     }
