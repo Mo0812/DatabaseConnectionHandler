@@ -1,0 +1,21 @@
+{
+    "name": "mk/database-connection-handler",
+    "description": "PDO wrapper for using MySQL databases with less configuration and more ease",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moritz Kanzler",
+            "email": "developer@moritzkanzler.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}

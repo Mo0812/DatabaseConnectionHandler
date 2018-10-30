@@ -1,10 +1,7 @@
 <?php
 namespace MK\DB;
 
-require __DIR__.'/DatabaseResult.php';
-require __DIR__.'/DatabaseConnectionException.php';
-require __DIR__.'/DatabaseQueryException.php';
-require_once __DIR__.'/DatabaseConnection.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 use \PDO;
 
