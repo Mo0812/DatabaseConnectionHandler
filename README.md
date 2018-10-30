@@ -36,18 +36,32 @@ After creating an instance of the ```DatabaseConnectionHandler``` you can use th
 
 The ```query()``` method has two parameters:
 * *$query* is the SQL query string.
-* *$arguments* is an array with certain arguments for the query string.
+* *$arguments* is an array with certain arguments for the query string. This argument could also be left empty.
 
 A query with parameters is build up like any query in PDO you use "?" to signal the DatabaseConnectionHandler that there is a matching argument for the placeholder in the *$arguments* array. So i.e.:
+
 ```php
 use \MK\DB;
 
 $dbc_handler = DatabaseConnectionHandler::getInstance();
 
-$searched_name = "Jack"
-$searched_age = 21
+$searched_name = "Jack";
+$searched_age = 21;
 
 $result = $dbc_handler->query("INSERT INTO my_table (name, age) VALUES (?, ?);", array($searched_name, $searched_age));
+```
+
+This prepared statement behaviour also work as in pure PDO with named placeholders:
+
+```php
+use \MK\DB;
+
+$dbc_handler = DatabaseConnectionHandler::getInstance();
+
+$searched_name = "Jack";
+$searched_age = 21;
+
+$result = $dbc_handler->query("INSERT INTO my_table (name, age) VALUES (:name, :age);", array(":name" => $searched_name, ":age" => $searched_age));
 ```
 
 ### Get results from your query
