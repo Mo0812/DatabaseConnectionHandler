@@ -15,8 +15,8 @@
         "php": ">=5.3.1"
     },
     "autoload": {
-        "psr-4": {
-            "MK\\DB\\": "src/"
-        }
+        "classmap": [
+            "src/"
+        ]
     }
 }
