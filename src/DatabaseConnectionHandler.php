@@ -18,11 +18,11 @@ class DatabaseConnectionHandler {
      * @return DatabaseConnectionHandler
      * @throws DatabaseConnectionException
      */
-    public static function getInstance() {
+    public static function getInstance($db_server = null, $db_name = null, $db_user = null, $db_password = null) {
         static $instance = null;
         if($instance === null) {
             try {
-                $instance = new DatabaseConnectionHandler();
+                $instance = new DatabaseConnectionHandler($db_server, $db_name, $db_user, $db_password);
             } catch (DatabaseConnectionException $e) {
                 throw $e;
             }
@@ -34,9 +34,9 @@ class DatabaseConnectionHandler {
      * Undocumented function
      * @throws DatabaseConnectionException
      */
-    private function __construct() {
+    private function __construct($db_server, $db_name, $db_user, $db_password) {
         try {
-            $this->pdo = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+            $this->pdo = new PDO('mysql:host='.$db_server.';dbname='.$db_name.';charset=utf8', $db_user, $db_password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
             $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
