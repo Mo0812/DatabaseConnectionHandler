@@ -1,8 +1,6 @@
 <?php
 namespace MK\DB;
 
-require_once __DIR__.'/../vendor/autoload.php';
-
 use \PDO;
 
 class DatabaseConnectionHandler {
