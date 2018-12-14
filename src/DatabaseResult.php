@@ -34,9 +34,9 @@ class DatabaseResult {
      *
      * @return mixed
      */
-    public function nextRow() {
+    public function nextRow($fetchStyle = \PDO::FETCH_ASSOC) {
         if(!is_null($this->statement)) {
-            $row = $this->statement->fetch();
+            $row = $this->statement->fetch($fetchStyle);
             return $row;
         } else {
             return false;
@@ -48,9 +48,9 @@ class DatabaseResult {
      *
      * @return array
      */
-    public function fetchAll() {
+    public function fetchAll($fetchStyle = \PDO::FETCH_ASSOC) {
         if(!is_null($this->statement)) {
-            return $this->statement->fetchAll();
+            return $this->statement->fetchAll($fetchStyle);
         } else {
             return false;
         }
