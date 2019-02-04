@@ -1,5 +1,4 @@
 {
-    "version": "1.1",
     "name": "mk/database-connection-handler",
     "description": "PDO wrapper for using MySQL databases with less configuration and more ease",
     "type": "library",
