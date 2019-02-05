@@ -36,7 +36,7 @@ class DatabaseConnectionHandler {
      */
     private function __construct($db_server, $db_name, $db_user, $db_password) {
         try {
-            if(is_null($db_server) || is_null($db_name) || is_null($db_user) || is_null($db_password)) {
+            if($db_server === null || $db_name === null || $db_user === null || $db_password === null) {
                 throw new DataBaseConnectionException("MySQL login credentials not found");
             }
             $this->pdo = new PDO('mysql:host='.$db_server.';dbname='.$db_name.';charset=utf8', $db_user, $db_password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
@@ -77,7 +77,7 @@ class DatabaseConnectionHandler {
      * @return void
      */
     private function bindLimitParameter(&$statement, $page = null, $limit = null) {
-        if(!is_null($page) && !is_null($limit)) {
+        if($page !== null && $limit !== null) {
             $statement->bindValue(':page', $page, PDO::PARAM_INT);
             $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
         }

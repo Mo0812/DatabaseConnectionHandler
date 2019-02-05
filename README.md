@@ -20,8 +20,8 @@ DatabaseConnectionHandler is a simple PDO wrapper. The DatabaseConnectionHandler
 
 ### Manually
 
-1. Just copy the included files into a folder in your project and include the `DatabaseConnectionHandler.php` wherever you want in your php files to use it.
-2. To give the connection credentials for your own database please edit the file `DataBaseConnection.php` and fill out the placeholders with your own mysql server informations.
+1.  Just copy the included files into a folder in your project and include the `DatabaseConnectionHandler.php` wherever you want in your php files to use it.
+2.  To give the connection credentials for your own database please edit the file `DataBaseConnection.php` and fill out the placeholders with your own mysql server informations.
 
 ## Roadmap / Specifications
 

@@ -49,7 +49,7 @@ class DatabaseResult {
      * @return array
      */
     public function fetchAll($fetchStyle = \PDO::FETCH_ASSOC) {
-        if(!is_null($this->statement)) {
+        if($this->statement !== null) {
             return $this->statement->fetchAll($fetchStyle);
         } else {
             return false;
