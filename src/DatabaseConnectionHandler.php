@@ -67,22 +67,6 @@ class DatabaseConnectionHandler {
         }
     }
 
-    /**
-     * Undocumented function
-     *
-     * @deprecated v1.1
-     * @param PDOStatement $statement
-     * @param int $page
-     * @param int $limit
-     * @return void
-     */
-    private function bindLimitParameter(&$statement, $page = null, $limit = null) {
-        if($page !== null && $limit !== null) {
-            $statement->bindValue(':page', $page, PDO::PARAM_INT);
-            $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
-        }
-    }
-
     function __destruct() {
         $this->pdo = null;
     }
